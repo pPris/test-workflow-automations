@@ -13,8 +13,9 @@ jobs:
       issues: write
       pull-requests: write
 
-    steps:
-    - uses: actions/stale@v3
+    steps:    
+    - name: using stale from marketplace
+      uses: actions/stale@v3
       with:
         repo-token: ${{ secrets.GITHUB_TOKEN }}
         days-before-stale: 1 # for testing
@@ -24,10 +25,15 @@ jobs:
         stale-pr-message: 'Stale pull request message (This PR has become stale)'
         stale-issue-label: 'no-issue-activity'
         stale-pr-label: 'no-pr-activity'
+    - name: Run a one-line script
+      run: echo Hello, world!
         
 #   comment_issues_with_no_prs:
 #   exclude issues that have open prs, even if the last update on issue was too long ago?
   
 #   comment_passing_prs:
       # ask for reviews
+      
+    
+     
     
