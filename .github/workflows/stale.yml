@@ -1,0 +1,33 @@
+name: Mark stale issues and pull requests
+
+on:
+  schedule:
+  - cron: '31 19 * * *'
+  workflow_dispatch:
+
+jobs:
+  check_stale:
+
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+      pull-requests: write
+
+    steps:
+    - uses: actions/stale@v3
+      with:
+        repo-token: ${{ secrets.GITHUB_TOKEN }}
+        days-before-stale: 1 # for testing
+        # days-before-issue-stale: 365 # or mark it stale after a next release?
+        debug-only: true
+        stale-issue-message: 'Stale issue message (This issue has become stale)'
+        stale-pr-message: 'Stale pull request message (This PR has become stale)'
+        stale-issue-label: 'no-issue-activity'
+        stale-pr-label: 'no-pr-activity'
+        
+#   comment_issues_with_no_prs:
+#   exclude issues that have open prs, even if the last update on issue was too long ago?
+  
+#   comment_passing_prs:
+      # ask for reviews
+    
