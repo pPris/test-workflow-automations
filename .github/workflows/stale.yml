@@ -21,7 +21,7 @@ jobs:
         days-before-stale: 1 # for testing
         # days-before-issue-stale: 365 # or mark it stale after a next release?
         days-before-issue-close: -1 
-        days-before-pr-stale: 14
+        days-before-pr-stale: 3
         days-before-pr-close: 21
         
         stale-issue-message: 'This PR has become stale. It will be automatically closed if it remains stale for too long.'
