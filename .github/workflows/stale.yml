@@ -1,8 +1,8 @@
-name: Mark stale issues and pull requests
+name: Clean up issues & PRs
 
 on:
   schedule:
-  - cron: '31 19 * * *'
+  - cron: '31 14 * * *'
   workflow_dispatch:
 
 jobs:
@@ -14,25 +14,32 @@ jobs:
       pull-requests: write
 
     steps:    
-    - name: using stale from marketplace
+    - name: Mark stale issues and PRs, and close inactive PRs
       uses: actions/stale@v3
       with:
-        repo-token: ${{ secrets.GITHUB_TOKEN }}
+        repo-token: ${{ secrets.GITHUB_TOKEN }} # where was this set? 
         days-before-stale: 1 # for testing
         # days-before-issue-stale: 365 # or mark it stale after a next release?
+        days-before-issue-close: -1 
+        days-before-pr-stale: 14
+        days-before-pr-close: 21
+        
+        stale-issue-message: 'This PR has become stale. It will be automatically closed if it remains stale for too long.'
+        stale-pr-message: 'This PR has become stale. It will be automatically closed if it remains stale for too long.'
+        stale-issue-label: 'stale.check-relevancy'
+        stale-pr-label: 'stale.pr'
+        close-pr-message: 'This PR has been automatically closed because of inactivity. Feel free to reopen the PR if you wish to continue.'
+        close-pr-label: 'closed-automatically'
+        exempt-issue-labels: 'c.Epic,help wanted,good first issue,good second issue'
+        
         debug-only: true
-        stale-issue-message: 'Stale issue message (This issue has become stale)'
-        stale-pr-message: 'Stale pull request message (This PR has become stale)'
-        stale-issue-label: 'no-issue-activity'
-        stale-pr-label: 'no-pr-activity'
+        
     - name: Run a one-line script
       run: echo Hello, world!
-        
-#   comment_issues_with_no_prs:
-#   exclude issues that have open prs, even if the last update on issue was too long ago?
-  
-#   comment_passing_prs:
-      # ask for reviews
+
+# Good to have workflows   
+    #   add a label on issues that
+    #   auto add a comment on PRs that need reviews, if the checks are passing but no reviews have been made in x days since PR was ready for review
       
     
      
