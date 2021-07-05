@@ -31,6 +31,7 @@ jobs:
         close-pr-message: 'This PR has been automatically closed because of inactivity. Feel free to reopen the PR if you wish to continue.'
         close-pr-label: 'closed-automatically'
         exempt-issue-labels: 'c.Epic,help wanted,good first issue,good second issue'
+        exempt-pr-labels: 'S.ToMerge'
         
         debug-only: false
         
@@ -38,8 +39,8 @@ jobs:
       run: echo Hello, world!
 
 # Good to have workflows   
-    #   add a label on issues that
     #   auto add a comment on PRs that need reviews, if the checks are passing but no reviews have been made in x days since PR was ready for review
+    #   comment on stale PRs with S.ToMerge (stale can be used, run this an hour later to not overrun github api limits) 
       
     
      
