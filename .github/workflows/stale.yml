@@ -32,7 +32,7 @@ jobs:
         close-pr-label: 'closed-automatically'
         exempt-issue-labels: 'c.Epic,help wanted,good first issue,good second issue'
         
-        debug-only: true
+        debug-only: false
         
     - name: Run a one-line script
       run: echo Hello, world!
