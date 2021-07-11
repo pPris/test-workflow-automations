@@ -19,7 +19,7 @@ jobs:
       with:
         repo-token: ${{ secrets.GITHUB_TOKEN }}
         days-before-stale: 1 # for testing
-        # days-before-issue-stale: 365 # or mark it stale after a next release?
+        # days-before-issue-stale: 365 
         days-before-issue-close: -1 
         days-before-pr-stale: 3
         days-before-pr-close: 21
