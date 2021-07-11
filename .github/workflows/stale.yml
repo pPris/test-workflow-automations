@@ -17,7 +17,7 @@ jobs:
     - name: Mark stale issues and PRs, and close inactive PRs
       uses: actions/stale@v3
       with:
-        repo-token: ${{ secrets.GITHUB_TOKEN }} # where was this set? 
+        repo-token: ${{ secrets.GITHUB_TOKEN }}
         days-before-stale: 1 # for testing
         # days-before-issue-stale: 365 # or mark it stale after a next release?
         days-before-issue-close: -1 
@@ -40,7 +40,7 @@ jobs:
 
 # Good to have workflows   
     #   auto add a comment on PRs that need reviews, if the checks are passing but no reviews have been made in x days since PR was ready for review
-    #   comment on stale PRs with S.ToMerge (stale can be used, run this an hour later to not overrun github api limits) 
+    #   comment on stale PRs with S.ToMerge (actions/stale@v3 can be used, run this an hour later to not overrun github api limits) 
       
     
      
