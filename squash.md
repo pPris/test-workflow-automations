@@ -1,3 +1,3 @@
 ### Squash.md
 
-Hello world
+Hello world! 
