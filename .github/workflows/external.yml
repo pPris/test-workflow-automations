@@ -1,0 +1,25 @@
+on: [push]
+
+jobs:
+  hello_world_job:
+    runs-on: ubuntu-latest
+    name: A job to say hello
+    steps:
+      - name: Hello world action step
+        id: hello
+        uses: ppris/pr-workflow-test #@v1.0
+        with:
+          who-to-greet: 'Mona the Octocat'
+      # Use the output from the `hello` step
+      - name: Get the output time
+        run: echo "The time was ${{ steps.hello.outputs.time }}"
+        
+  extra_job_to_test_subfolders:
+    runs-on: ubuntu-latest
+    name: Extra job
+    steps:
+      - name: Issue Comment Step
+        # note that its good to release with a tag but i have not tried yet 
+        uses: ppris/pr-workflow-test/.github/pr_management/ready_for_review_comment/
+        with: 
+          repo-token: ${{secrets.GITHUB_TOKEN}}
